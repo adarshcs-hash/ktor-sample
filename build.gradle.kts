@@ -28,7 +28,6 @@ dependencies {
     implementation(libs.ktor.server.config.yaml)
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test.junit)
-    implementation(libs.dotenv)
     implementation(libs.exposed.core)
     implementation(libs.exposed.dao)
     implementation(libs.exposed.jdbc)
@@ -36,5 +35,6 @@ dependencies {
     implementation(libs.hikari)
     implementation(libs.bcrypt)
     implementation("org.jetbrains.exposed:exposed-java-time:0.61.0")
+    implementation("org.postgresql:postgresql:42.7.2")
 
 }

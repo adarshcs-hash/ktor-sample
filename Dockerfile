@@ -1,12 +1,22 @@
-# Stage 1: Build
+# Build stage
 FROM gradle:8.10-jdk17 AS build
-COPY --chown=gradle:gradle . /home/gradle/src
-WORKDIR /home/gradle/src
-RUN gradle buildFatJar --no-daemon
+WORKDIR /app
+COPY . .
+RUN gradle shadowJar --no-daemon
 
-# Stage 2: Run
-FROM openjdk:17-jdk-slim
-RUN mkdir /app
-COPY --from=build /home/gradle/src/build/libs/ktor-sample-all.jar /app/ktor-sample.jar
-EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "/app/ktor-sample.jar"]
+# Runtime stage
+FROM eclipse-temurin:17-jre
+WORKDIR /app
+
+# Copy the built application
+COPY --from=build /app/build/libs/ktor-sample-all.jar .
+
+# Set default environment variables
+ENV PORT=8080
+EXPOSE $PORT
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s \
+  CMD curl -f http://localhost:$PORT/ || exit 1
+
+ENTRYPOINT ["java", "-jar", "ktor-sample-all.jar"]

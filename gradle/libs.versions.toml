@@ -26,7 +26,6 @@ exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "e
 exposed-javatime = { module = "org.jetbrains.exposed:exposed-javatime", version.ref = "exposed" }
 postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
 hikari = { module = "com.zaxxer:HikariCP", version.ref = "hikari" }
-dotenv = { module = "io.github.cdimascio:dotenv-kotlin", version.ref = "dotenv" }
 bcrypt = { module = "org.mindrot:jbcrypt", version.ref = "bcrypt" }
 
 [plugins]

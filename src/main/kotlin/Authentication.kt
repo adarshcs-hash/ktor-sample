@@ -9,7 +9,6 @@ import com.auth0.jwt.algorithms.Algorithm
 import com.example.models.RefreshTokens
 import com.example.models.RegisterResponse
 import extensions.toUser
-import io.github.cdimascio.dotenv.dotenv
 import io.ktor.http.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
@@ -26,17 +25,18 @@ import java.time.LocalDateTime
 
 import java.util.*
 
-private class AuthenticationException(
-    message: String = "Invalid credentials",
-    val statusCode: HttpStatusCode = HttpStatusCode.Unauthorized
-) : RuntimeException(message)
 
+data class JwtConfig(
+    val secret: String,
+    val issuer: String,
+    val audience: String,
+    val realm: String
+)
 fun Application.configureAuth() {
-    val dotenv = dotenv()
-    val jwtSecret = dotenv["JWT_SECRET"] ?: throw IllegalStateException("JWT_SECRET not found")
-    val jwtIssuer = dotenv["JWT_ISSUER"] ?: throw IllegalStateException("JWT_ISSUER not found")
-    val jwtAudience = dotenv["JWT_AUDIENCE"] ?: throw IllegalStateException("JWT_AUDIENCE not found")
-    val jwtRealm = dotenv["JWT_REALM"] ?: throw IllegalStateException("JWT_REALM not found")
+    val jwtSecret = System.getenv("JWT_SECRET") ?: throw IllegalStateException("JWT_SECRET not found")
+    val jwtIssuer = System.getenv("JWT_ISSUER") ?: throw IllegalStateException("JWT_ISSUER not found")
+    val jwtAudience = System.getenv("JWT_AUDIENCE") ?: throw IllegalStateException("JWT_AUDIENCE not found")
+    val jwtRealm = System.getenv("JWT_REALM") ?: throw IllegalStateException("JWT_REALM not found")
 
     // JWT Configuration
     install(Authentication) {

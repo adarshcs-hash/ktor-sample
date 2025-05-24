@@ -8,13 +8,13 @@ import org.jetbrains.exposed.sql.DatabaseConfig
 fun main(args: Array<String>) {
     val port = System.getenv("PORT")?.toInt() ?: 8080
     embeddedServer(Netty, port = port) {
-        connectToDatabase()
-        module()
+
     }.start(wait = true)
 }
 
 fun Application.module() {
    // configureSecurity()
+    DatabaseFactory.init()
     configureSerialization()
     configureRouting()
     configureAuth()
