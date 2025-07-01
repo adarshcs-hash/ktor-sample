@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.ktor)
     alias(libs.plugins.kotlin.plugin.serialization)
 
+
+
 }
 
 group = "com.example"
@@ -14,6 +16,7 @@ application {
 
 repositories {
     mavenCentral()
+
 }
 
 dependencies {
@@ -36,5 +39,12 @@ dependencies {
     implementation(libs.bcrypt)
     implementation("org.jetbrains.exposed:exposed-java-time:0.61.0")
     implementation("org.postgresql:postgresql:42.7.2")
+    implementation("io.github.jan-tennert.supabase:storage-kt:3.1.4")
+    implementation("io.github.jan-tennert.supabase:auth-kt:3.1.4")
+    implementation("io.ktor:ktor-client-cio:2.2.0")
+
+
+
+
 
 }

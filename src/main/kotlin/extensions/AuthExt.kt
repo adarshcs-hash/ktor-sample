@@ -1,5 +1,6 @@
 package extensions
 
+import UserResponse
 import models.User
 import models.Users
 import org.jetbrains.exposed.sql.ResultRow
@@ -13,3 +14,4 @@ fun ResultRow.toUser(): User {
         name = this[Users.name]  // Handles nullable field automatically
     )
 }
+

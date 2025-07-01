@@ -4,9 +4,26 @@
             <pattern>%d{YYYY-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
+
+    <!-- Specific loggers for JWT and authentication -->
+    <logger name="com.auth0.jwt" level="DEBUG"/>
+    <logger name="io.ktor.auth" level="DEBUG"/>
+    <logger name="io.ktor.auth.jwt" level="DEBUG"/>
+    <logger name="your.package.auth" level="TRACE"/> <!-- Your auth package -->
+
+    <!-- HTTP traffic logging -->
+    <logger name="io.ktor.server.netty" level="DEBUG"/>
+    <logger name="io.ktor.http" level="DEBUG"/>
+
+    <!-- Database/transaction logging -->
+    <logger name="org.jetbrains.exposed.sql" level="DEBUG"/>
+    <logger name="org.jetbrains.exposed.sql.transactions" level="DEBUG"/>
+
+    <!-- Default loggers -->
+    <logger name="org.eclipse.jetty" level="INFO"/>
+    <logger name="io.netty" level="INFO"/>
+
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
     </root>
-    <logger name="org.eclipse.jetty" level="INFO"/>
-    <logger name="io.netty" level="INFO"/>
 </configuration>
