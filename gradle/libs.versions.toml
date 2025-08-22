@@ -28,6 +28,7 @@ postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" 
 hikari = { module = "com.zaxxer:HikariCP", version.ref = "hikari" }
 bcrypt = { module = "org.mindrot:jbcrypt", version.ref = "bcrypt" }
 
+
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin-version" }
 ktor = { id = "io.ktor.plugin", version.ref = "ktor-version" }

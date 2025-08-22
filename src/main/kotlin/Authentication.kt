@@ -786,6 +786,8 @@ fun Application.configureAuth() {
                                 .firstOrNull()?.get(Carts.id)
                                 ?: (Carts.insert {
                                     it[userId] = request.userId
+                                    it[createdAt] = LocalDateTime.now() // Set created_at
+                                    it[updatedAt] = LocalDateTime.now() // Set updated_at
                                     // Rely on database default for created_at and updated_at
                                 } get Carts.id)
 
@@ -808,6 +810,8 @@ fun Application.configureAuth() {
                                 }) {
                                     it[quantity] = newQuantity
                                     it[priceAtAddition] = price * newQuantity.toBigDecimal()
+                                    it[updatedAt] = LocalDateTime.now() // Update timestamp
+                                    it[CartItems.createdAt] = existingItem[CartItems.createdAt] // Keep original created_at
                                     // Rely on database default for updated_at
                                 }
                             } else {
@@ -817,6 +821,8 @@ fun Application.configureAuth() {
                                     it[CartItems.productId] = request.productId
                                     it[quantity] = request.quantity
                                     it[priceAtAddition] = price * request.quantity.toBigDecimal()
+                                    it[CartItems.createdAt] = LocalDateTime.now() // Set created_at
+                                    it[CartItems.updatedAt] = LocalDateTime.now() // Set updated_at
                                     // Rely on database default for created_at and updated_at
                                 }
                             }

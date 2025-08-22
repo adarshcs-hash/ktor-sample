@@ -19,7 +19,8 @@ import org.jetbrains.exposed.sql.transactions.transaction
 fun Application.configureRouting() {
     routing {
         get("/") {
-            call.respondText("Hello World!")
+            call.respondRedirect("/static/index.html")
+
         }
         // Static plugin. Try to access `/static/index.html`
         staticResources("/static", "static")
