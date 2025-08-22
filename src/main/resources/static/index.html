@@ -184,37 +184,5 @@
     </style>
 </head>
 <body>
-<div class="bg-animation">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-</div>
-<div class="container">
-    <h1 class="title">Welcome to Xylem Live</h1>
-    <p class="subtitle">Redirecting to your batch overview...</p>
-    <div class="redirect-message">
-        Please wait
-    </div>
-</div>
-<script>
-    // Instant redirect
-    window.location.replace("https://www.xylem.live/batches/alp-target-batch-614355/batch-overview?came_from=my-batches");
-
-    // Add a subtle parallax effect on mouse move (only visible for a split second)
-    document.addEventListener('mousemove', (e) => {
-        const x = e.clientX / window.innerWidth;
-        const y = e.clientY / window.innerHeight;
-
-        const container = document.querySelector('.container');
-        container.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
-    });
-</script>
 </body>
 </html>

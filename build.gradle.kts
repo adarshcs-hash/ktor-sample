@@ -42,10 +42,12 @@ dependencies {
     implementation("io.github.jan-tennert.supabase:storage-kt:3.1.4")
     implementation("io.github.jan-tennert.supabase:auth-kt:3.1.4")
     implementation("io.ktor:ktor-client-cio:2.2.0")
+    implementation("io.ktor:ktor-client-core:2.3.12")
 
     implementation("io.ktor:ktor-server-core:3.1.3")
     implementation("io.ktor:ktor-server-netty:3.1.3")
     implementation("io.ktor:ktor-server-html-builder:3.1.3")
+
 
 
 

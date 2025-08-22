@@ -1,10 +1,11 @@
 package com.example
 
-import configureAuthRouting
+import SupabaseClient
 import io.ktor.server.application.*
+import io.ktor.client.*
+import io.ktor.client.engine.cio.*
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
-import org.jetbrains.exposed.sql.DatabaseConfig
 
 fun main(args: Array<String>) {
     val port = System.getenv("PORT")?.toInt() ?: 8080
@@ -16,10 +17,13 @@ module()
 }
 
 fun Application.module() {
+    val httpClient = HttpClient(CIO)
 
+
+    //configureShutdown(httpClient)
    // configureSecurity()
     DatabaseFactory.init()
     configureSerialization()
-    configureRouting()
+    configureRouting(SupabaseClient, httpClient)
     configureAuth()
 }
